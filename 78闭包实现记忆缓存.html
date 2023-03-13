@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const add = () => {
+      const cache = {};
+      //闭包
+      return num => {
+        // in操作符:左侧是指定的属性，右侧是对象——如果指定的属性在指定的对象或其原型链中，返回true
+        if (num in cache) {
+          return `From cache! ${cache[num]}`;
+        } else {
+          const result = num + 10;
+          cache[num] = result;
+          return `Calculated! ${result}`;
+        }
+      };
+    };
+
+    //创建了一个闭包对象
+    const addFunction = add();
+    /* 第一次addFunction(10)执行后，cache={10:20} */
+    console.log(addFunction(10)); //Calculated! 20
+    console.log(addFunction(10)); //From cache! 20
+    console.log(addFunction(5 * 2)); //From cache! 20
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const name = 'Lydis'
+    var hobby = 'shfaa'
+    age = 10
+
+    // delete不能删除使用let或const或var声明的变量
+    console.log(delete name) //fase
+    // age是意外声明的全局变量，挂载到window对象中，也就是window对象的属性 可以被删除
+    console.log(delete age) //ture
+    console.log(delete hobby) //false
+  </script>
+</body>
+
+</html>

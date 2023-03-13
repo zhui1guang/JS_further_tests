@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul {
+      background-color: pink;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    /* 
+      事件委托：如果想要在大量的子元素中单击任何一个都可以运行一段代码，
+      可以将事件监听器设置在父节点上，并让子节点上发生的事件冒泡到父节点上，
+      而不是每个子节点单独设置事件监听器
+    */
+    //  创建列表项
+    var ul = document.createElement('ul')
+    document.body.appendChild(ul)
+
+    var li1 = document.createElement('li')
+    var li2 = document.createElement('li')
+    ul.appendChild(li1)
+    ul.appendChild(li2)
+    function hide(e) {
+      //e.target指向的是li的引用
+      // 不想e.currentTarget引用这其父ul
+      e.target.style.visibility = 'hidden'
+    }
+    // 事件监听器设置到父节点上
+    ul.addEventListener('click', hide, false)
+  </script>
+</body>
+
+</html>

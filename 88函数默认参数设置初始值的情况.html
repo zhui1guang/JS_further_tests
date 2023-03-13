@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      可以将函数的默认参数设置为另一个参数，前提是要将另一个参数在此之前定义
+    */
+    // num1=10, num2=10
+    function sum(num1, num2 = num1) {
+      console.log(num1 + num2);
+    }
+    // num1=10
+    sum(10); //20
+
+    //num1 = 10, num2=undefined
+    function sumTwo(num1, num2) {
+      console.log(num1 + num2);
+    }
+    sumTwo(10);//NaN
+
+    function test(m = n, n = 2) {
+      console.log(m, n);
+    }
+    // test();//ReferenceError:Cannot access 'n' before initialization参数n尚未初始化
+    test(3); // m=3, n=2
+    test(3, 4); //m=3,n=4
+
+    function test1(n = 2, m = n) {
+      console.log(n, m);
+    }
+    test1();//n=2, m=2
+  </script>
+</body>
+
+</html>

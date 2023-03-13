@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const box = { x: 10, y: 20 };
+
+    /* 
+    Object.freeze()冻结一个对象，也就是被冻结后这个对象任何属性（除属性类型是非冻结的对象外）都无法被改变，包括该对象的隐式原型也不能被改变。
+    返回值是被冻结的对象。
+    在严格模式下，强行改变属性将会抛出TypeError错误。
+    */
+    const freezeRes = Object.freeze(box);
+    console.log(freezeRes); //{x: 10, y: 20}
+
+    const shape = box;
+    shape.x = 100;
+    console.log(shape); //{x: 10, y: 20}
+  </script>
+</body>
+
+</html>

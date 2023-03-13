@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>this永远指向最后调用它的那个对象！</title>
+</head>
+
+<body>
+  <!-- this永远指向最后调用它的那个对象！ -->
+  <script>
+    // 1.全局上下文：在全局执行环境下，this指向全局对象
+    console.log(this === window); //true
+
+    a = 35
+    console.log(window.a); //35
+
+    this.b = 'mdn'
+    console.log(window.b);//mdn
+    console.log(b);//mdn
+
+
+
+
+    // 2 函数上下文：取决于函数被调用的方式
+    // 示例一
+    function f1() {
+      return this
+    }
+
+    console.log(f1() === window) //true
+    // 在node中，f1() === globalThis
+    /*
+      严格模式下 f1() === undefined
+      因为f1是直接被调用的，也就是没有设置this，不是作为对象的属性或方法调用的（window.f1())
+     */
+
+    // 示例二
+    var obj = { a1: 'Custom' }
+
+    var a1 = 'Global'
+
+    function whatsThis() {
+      return this.a1
+    }
+
+    console.log(whatsThis()) //Global 没有设置this，默认是全局对象
+    /* 被绑定到对象obj上了 */
+    console.log(whatsThis.call(obj)); //Custom
+    console.log(whatsThis.apply(obj)) //Custom
+
+
+
+    // 示例三：this和对象的转换
+    function add(c, d) {
+      return this.a2 + this.b2 + c + d
+    }
+
+    var o = {
+      a2: 1,
+      b2: 3
+    }
+
+    // 第一个参数作为this的对象，其余作为函数的参数
+    console.log(add.call(o, 5, 7)) //16
+    // 第一个对象作为this的对象，数组中的两个成员作为函数的参数
+    console.log(add.apply(o, [10, 20])) //34
+
+    // 实例3-1
+    function bar() {
+      console.log(Object.prototype.toString.call(this));
+    }
+    bar.call(7) //[object Number] 7被转换成new Number(7)
+    bar.call('foo') //[object String]
+    bar.call(null) //[object Window]
+    /* 
+      非严格模式下，如果用作this的值不是对象，则会被转换成对象。
+      null和undefined会被转换成window
+    */
+
+
+    // 示例四：bind方法
+    /* 
+      f.bind(someObject)会创建一个与f具有相同函数体作用域的函数，但是在这个新函数中，this将【永久被绑定到了bind的第一个参数，无论这个函数如何被调用】
+    */
+    function f() {
+      return this.a3
+    }
+
+    var g = f.bind({ a3: 'azerty' })
+    console.log(g()); //azerty
+
+    var h = g.bind({ a3: 'yoo' }) //bind只生效一次！！
+    console.log(h()); //azerty
+
+    var o1 = { a3: 57, f: f, g: g, h: h }
+    console.log(o1.a3, o1.f(), o1.g(), o1.h());
+    // 57 57 azerty azerty
+
+
+    //示例五：箭头函数
+    /* 
+      如果将this传递给call/bind/applay来调用箭头函数，将被忽略。不过仍然可以为调用添加参数，不过第一个参数应该设置为null
+    */
+    var globleObject = this;
+    var foo = (() => this)
+    console.log(foo() === globleObject); //true
+
+    var obj1 = { foo: foo }
+    console.log(obj1.foo() === globleObject);//true
+
+    // 尝试使用call来设定this
+    console.log(foo.call(obj1) === globleObject);//true
+    // 尝试用bind来设定
+    foo = foo.bind(obj1)
+    console.log(foo() === globleObject);//true
+
+
+    // 示例5-1: 函数返回值是一个箭头函数，则该函数的this将永久被绑定到它的外层函数的this 很难理解！！！！！！
+    var obj3 = {
+      bar1: function () {
+        var x = (() => this)
+        return x
+      }
+    }
+    // 作为obj3的方法调用bar1，把它的this绑定到obj3
+    // 将返回的函数的引用赋值给fn3
+    var fn3 = obj3.bar1()
+    console.log(fn3() === obj3); //true
+
+    // 注意：如果只是引用obj3的方法，而没有调用
+    var fn2 = obj3.bar1
+    console.log(fn2()() === window); ////true
+
+    // 3 类上下文：在构造函数中，this是一个常规对象。类中所有【非静态方法】都会被添加到this的原型中
+    // 示例一
+    class Example {
+      constructor() {
+        const proto = Object.getPrototypeOf(this)
+        console.log(Object.getOwnPropertyNames(proto));
+      }
+      first() { }
+      second() { }
+      static third() { }
+    }
+    new Example() //['constructor', 'first', 'second']
+    /*
+      静态方法不是this的属性，只是类自身的属性
+    */
+
+
+    // 示例二
+    /* 
+      类方法的this取决于如何被调用，可在构造函数中绑定类方法，来达到类中this总是指向这个类的实例
+    */
+    class Car {
+      constructor() {
+        // 总是指向Car的实例
+        this.sayBye = this.sayBye.bind(this)
+      }
+      sayHi() {
+        console.log(`Hello from ${this.name}`);
+      }
+      sayBye() {
+        console.log(`Bye from ${this.name}`);
+      }
+      get name() {
+        return 'Car'
+      }
+    }
+
+    class Bird {
+      get name() {
+        return 'Bird'
+      }
+    }
+
+    // 使用new，this被绑定到正在构造的新对象
+    const car = new Car()
+    const brid = new Bird()
+
+    car.sayHi(); //Hello from Car
+    // 只是引用car.sayHi而没有调用
+    brid.sayHi = car.sayHi
+    brid.sayHi() //Hello from Bird
+
+    //  sayBye函数已经被改写成总是指向Car的实例，此时this已经不取决于被如何调用了
+    brid.sayBye = car.sayBye
+    brid.sayBye() // Bye from Car
+  </script>
+</body>
+
+</html>

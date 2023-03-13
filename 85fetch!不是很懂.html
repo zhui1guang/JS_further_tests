@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 什么样的信息将被打印？
+    fetch('https://www.website.com/api/user/1')
+      .then(res => res.json())
+      .then(res => console.log(res));
+      /*
+      前一个.then()回调方法返回的结果
+      第二个.then()的res是前一个.then的返回值。可以这样继续链接，将该res继续传递给下一个.then
+    */
+  </script>
+</body>
+
+</html>

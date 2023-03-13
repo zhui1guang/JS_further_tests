@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h1>不是所有的对象都有原型：null(原型链的终点）和Object.prototype</h1>
+  <h2>
+    <ul>
+      <li>通过对象创建的对象，都有一个原型</li>
+      <li>所有引用类型（数组、对象、函数）都有一个隐式原型</li>
+      <li>引用类型.__proto__ === 构造函数.prototype</li>
+      <li>Object.create(null) 没有原型</li>
+      <li>每个函数（function）都有一个特殊的属性叫作原型（prototype）但是箭头函数没有原型</li>
+
+    </ul>
+  </h2>
+
+  <script>
+    // 创建一个对象，在其构造函数的原型上添加属性，并访问它的所有属性
+
+    //构造函数
+    function f() {
+      this.a = 1;
+      this.b = 2;
+    }
+
+    // 这并不是创建一个对象，此时o是函数f的返回值undefined
+    // let o = f()
+    // console.log(o instanceof Object) //false
+    // console.log(o) //undefined
+
+    // 创建一个对象，使用new
+    let o = new f()
+    // 在o的构造函数的原型上添加属性
+    f.prototype.b = 3;
+    f.prototype.c = 4;
+
+    // 访问属性
+    console.log(o.a); //1
+    console.log(o.b); //2 o本身有，不用到原型链上找
+    console.log(o.c); //4 
+    console.log(o.d); //undefined 最终找到null处也找不到，因此返回undefined
+
+  </script>
+</body>
+
+</html>

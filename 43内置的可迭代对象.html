@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    //  扩展运算符将可迭代的每个字符映射成一个元素 
+    /* 
+      内置可迭代对象：因为它们的原型对象都有一个Symbol.iterator方法
+        String
+        Map
+        Set
+        Array
+        TypedArray
+     */
+    const arr = [...'chen']
+    console.log(arr) // ['c','h','e',n]
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      for in是以对象的key来迭代，以而已顺序迭代一个对象的属性，除了Symbol以外的可枚举属性，包括继承的可枚举的属性
+      for of 是在“可迭代对象”上创建一个循环
+    */
+    const person = {
+      name: 'chen',
+      age: '23'
+    }
+    for (const item in person) {
+      console.log(item)
+    }
+    /*
+      输出
+      name
+      age
+    */
+  </script>
+</body>
+
+</html>

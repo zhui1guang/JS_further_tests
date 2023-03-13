@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const shape = {
+      radius: 10,
+      diameter() {
+        console.log(this); // 指向shape
+        return this.radius * 2;
+      },
+      /* 
+      箭头函数只会从自己作用域的上一层继承this
+      */
+      perimeter: () => {
+        console.log(this);
+        2 * Math.PI * this.radius
+      }
+    }
+
+    const res1 = shape.diameter()
+    const res2 = shape.perimeter() // 指向全局window，因为是箭头函数
+    console.log(res1); //20 
+    console.log(res2);  // undefined
+  </script>
+</body>
+
+</html>

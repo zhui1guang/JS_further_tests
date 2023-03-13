@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创建一个计数器</title>
+</head>
+
+<body>
+  <script>
+    // 词法作用域：一个函数可以访问在它的调用上下文中定义的变量（Lexical Scope）
+    /* 
+      创建了一个“词法环境”为三个公共函数：
+         Counter.increment()
+         Counter.decrement()
+         Counter.value()
+        所共享，这三个公共函数是共享一个环境的闭包
+        该共享环境创建在一个立即执行函数中
+          其中包含有两个私有项
+    */
+    var Counter = (function () {
+      var privateCounter = 0
+      function changeBy(val) {
+        privateCounter += val
+      }
+      return {
+        increment: function () {
+          changeBy(1)
+        },
+        decrement: function () {
+          changeBy(-1)
+        },
+        value: function () {
+          return privateCounter
+        }
+      }
+    })()
+
+    console.log(Counter.value()); //0
+    Counter.increment()
+    Counter.increment()
+    console.log(Counter.value()) //2
+    Counter.decrement()
+    console.log(Counter.value()) //1
+  </script>
+</body>
+
+</html>

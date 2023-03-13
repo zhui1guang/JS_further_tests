@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Person(nickname) {
+      this.nickname = nickname
+    }
+
+    Person.prototype.age = 18;
+
+    p1 = new Person('Sim')
+    p2 = new Person('Sum');
+    p2.nickname = 'sunny'
+
+    /* 
+    hasOwnProperty 判断对象自身属性有没有指定的属性，会忽略掉原型链上的继承属性 for...in一般情况下迭代包括继承的可迭代的属性
+    */
+    console.log(p1 instanceof Person);//true
+    console.log(p2.hasOwnProperty('nickname'));//true
+    console.log(p2 instanceof Object);//true
+    console.log(p1.hasOwnProperty('age'));//false
+
+    // 检查指定的属性是否在指定的对象或【原型链中】
+    console.log("age" in p1) //返回true 因为原型链上有
+    console.log(p1.hasOwnProperty('nickname')) //true
+
+    /* function Person() { }
+    Person.prototype.name = "Tom"
+    Person.prototype.age = 19
+    Person.prototype.sayName = function () {
+      alert(this.name)
+    }
+
+    var p1 = new Person()
+    var p2 = new Person()
+    console.log(p1.name);//Tom
+    console.log(p1.hasOwnProperty('name')); //false 因为是原型链上的继承属性
+
+    // 自身设置了name属性
+    p1.name = "Jerry"
+    console.log(p1.name);//Jerry
+    console.log(p1.hasOwnProperty('name'));//true */
+  </script>
+</body>
+
+</html>

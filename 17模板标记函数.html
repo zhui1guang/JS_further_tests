@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function getPersonInfo(one, two, three) {
+      console.log(one); //['', ' is ', ' year old', raw: Array(3)]
+      console.log(two); //Lylia
+      console.log(three); //21
+    }
+
+    const person = "Lylia"
+    const age = 21
+    getPersonInfo`${person} is ${age} year old`
+    /*
+      使用标记的模板字符串，
+      第一个参数的值：始终是字符串值的数组
+      其他参数：获取传递到模板字符串中的表达式的值
+     */
+  </script>
+</body>
+
+</html>

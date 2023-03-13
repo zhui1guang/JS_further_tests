@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>创建多个计数器</title>
+</head>
+
+<body>
+  <script>
+    var makeCounter = function () {
+      var privateCounter = 0
+      function changeBy(val) {
+        privateCounter += val
+      }
+      return {
+        increment: function () {
+          changeBy(1)
+        },
+        decrement: function () {
+          changeBy(-1)
+        },
+        value: function () {
+          return privateCounter
+        }
+      }
+    }
+
+    // 创建两个计数器 
+    /* 
+      每个闭包都是引用自己词法作用域内的变量privateCounter
+      每次调用其中一个计数器时，通过改变privateCounter的值来改变这个闭包的词法环境。然而在一个闭包内对变量的修改不会影响到另一个闭包中的变量——特别有利于数据的隐藏和封装
+    */
+    var counter1 = makeCounter()
+    var counter2 = makeCounter()
+    console.log(counter1.value()) //0
+    console.log(counter2.value()) //0
+    counter1.decrement()
+    counter1.decrement()
+    counter2.increment()
+    console.log(counter1.value()) //-2
+    console.log(counter2.value()) //1
+  </script>
+</body>
+
+</html>

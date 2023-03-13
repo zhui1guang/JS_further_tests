@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const foo = ['one', 'two']
+
+    // 解构比源更多的元素，按顺序分配，无元素分配的为undefined
+    const [red, yellow, green, blue] = foo
+
+    console.log(red) //one
+    console.log(yellow) //two
+    console.log(green) //undefined
+    console.log(blue) //undefined
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // bind()创建一个新函数，这个新函数的this会指向第一个参数，其余参数在调用时被作为新函数的参数。
+
+    // 创建一个新函数，不论怎么调用，都有同样的this值。
+    this.x = 90
+    var moudule = {
+      x: 20,
+      getX: function () {
+        return this.x
+      }
+    }
+    console.log(moudule.getX()) //20
+
+    /* 
+      新手常犯的错误：
+        将一个方法从对象中拿出来，然后再调用，期望方法中的this依然是原来的对象。
+        但是这样子一般会丢失原来的对象，此时的解决方案时用bind永久绑定那个对象
+    */
+    var retriveX = moudule.getX
+    console.log(retriveX()) //90
+
+    // 创建一个与retriveX具有相同作用域和函数体的新函数，
+    // 并且this被永久绑定到moudule了，也就是bind只生效一次
+    var boundGetX = retriveX.bind(moudule)
+    console.log(boundGetX()) //20
+    var afterbindX = boundGetX.bind(window)
+    console.log(afterbindX()) //20
+  </script>
+</body>
+
+</html>

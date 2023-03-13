@@ -1,0 +1,36 @@
+<!-- 声明文档解析类型 html是以H5的 -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    class Chameleon {
+      /* 
+      静态方法 
+        只能由类名调用 即Chameleon.colorChange 
+            && 
+        不会被添加在this的原型上 Object.getOwnPropertyName(Object.getPrototypeOf(this)) 不会有该静态方法
+      */
+      static colorChange(newColor) {
+        this.newColor = newColor
+        return this.newColor
+      }
+
+      constructor({ newColor = 'green' } = {}) {
+        this.newColor = newColor
+      }
+    }
+
+    const freddie = new Chameleon({ newColor: 'purple' })
+    freddie.colorChange('orange') //TypeError
+  </script>
+</body>
+
+</html>

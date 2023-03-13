@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const person = { name: 'Lylia' }
+    function sayHi(age) {
+      console.log(`${this.name} is ${age}`)
+    }
+    // call和apply是立即执行，他们都是调用一个给定this值的函数
+    sayHi.call(person, 23) //Lylia is 23
+    sayHi.apply(person, [12]) //Lylia is 12
+    // 而bind是创建一个具有给定this值的新函数，需要手动调用
+    sayHi.bind(person, 21) //无输出 这是一个function
+    sayHi.bind(person, 21)() // Lylia is 21
+    sayHi(person, 20) // is [object, Object ]
+  </script>
+</body>
+
+</html>

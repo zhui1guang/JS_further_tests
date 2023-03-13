@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      String也是一个构造函数，在其原型上添加方法 String类型的实例也可以访问到
+    */
+    String.prototype.giveLydiaPizza = () => {
+      return 'Just give Lydia'
+    }
+
+    // String的实例
+    const name = 'lydia'
+    console.log(name.giveLydiaPizza()) //Just give Lydia
+  </script>
+</body>
+
+</html>

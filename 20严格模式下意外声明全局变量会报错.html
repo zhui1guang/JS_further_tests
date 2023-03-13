@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+        严格模式下，意外声明变量会抛出引用错误——ReferrenceError
+        非严格模式下，意外声明的变量会被添加到window中
+    */
+    function getAge() {
+      'use strict'
+      age = 21
+      console.log(age)
+    }
+    getAge() //ReferenceError——引用错误
+  </script>
+</body>
+
+</html>

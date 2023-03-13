@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  任何可迭代对象都可以使用数组解构
+  <ul>
+    <li>数组</li>
+    <li>Map</li>
+    <li>Set</li>
+    <li>String</li>
+    <li>TypeArray</li>
+  </ul>
+  <script>
+    const [a, b] = new Map([[1, 2], [3, 4]]);
+    console.log(a); //[1,2]
+    console.log(b); //[3,4]
+  </script>
+</body>
+
+</html>

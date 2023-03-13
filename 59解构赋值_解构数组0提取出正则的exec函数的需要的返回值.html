@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function parseProtocol(url) {
+      /* 解析出
+      协议(\w+)匹配以一个或以上的字符串 字母或下划线开头的串、
+      域名、([^/]+) 匹配没有含“/”的0或以上各字符
+      路径 （.*)$ 任何字符结尾的字符 */
+      const parsedURL = /^(\w+):\/\/([^/]+)\/(.*)$/.exec(url);
+      if (!parsedURL) {
+        return false;
+      }
+      console.log(parsedURL);
+      /* 
+      ['https://developer.mozilla.org/zh-CN/docs/Web/JavaScript', 'https', 'developer.mozilla.org', 'zh-CN/docs/Web/JavaScript']
+      */
+
+      // 结构出匹配的元素，忽略掉第一个返回值也就是原串
+      const [, protocol, fullhost, fullpath] = parsedURL;
+      return protocol;
+    }
+    console.log(parseProtocol('https://developer.mozilla.org/zh-CN/docs/Web/JavaScript')); //https
+  </script>
+</body>
+
+</html>

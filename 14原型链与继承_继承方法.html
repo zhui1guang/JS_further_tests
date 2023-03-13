@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    var o = {
+      a: 2,
+      // 继承方法
+      m: function () {
+        return this.a + 1;
+      }
+    }
+
+    console.log(o.m()); //3
+    // 此时this指向的是当前继承的对象 o
+
+    // p是一个继承o的对象
+    var p = Object.create(o);
+
+    //为实例对象p添加属性a,所以属性a在实例对象上找到了，是4，不用在其原型链上找了
+    p.a = 4;
+
+    // 此时this指向的是示例对象p
+    console.log(p.m()); //5
+
+    var instanceO = Object.create(o);
+    // 因为为instanceO创建自己的属性a，所以在原型链上找到其构造函数的原型对象上的a
+    console.log(instanceO.a) //2
+    console.log(instanceO.m())//3
+  </script>
+</body>
+
+</html>

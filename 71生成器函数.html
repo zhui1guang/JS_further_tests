@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h3>yield相当于生成器函数的return关键字，用来暂停生成器函数的执行，当调用生成器.next()时恢复yield后面代码的执行</h3>
+  <script>
+    // 生成器函数:能在执行时暂停，后面又能暂停处继续执行
+    function* startGame() {
+      // yield用来暂停生成器函数的执行，也就是首次使用next()执行生成器函数，执行到yield就停止
+      const 答案 = yield "DO you love JavaScrpt";
+      if (答案 !== "Yes") {
+        return "Oh wow...Guess we're gone here";
+      }
+      return "JavaScript loves you back ❤️";
+    }
+
+    // 调用生成器函数并不会马上执行它里面的语句，而是返回一个生成器对象——game
+    const game = startGame();
+    // 首次生成器对象game调用next(),返回一个包含value和done属性的对象。value是本次yield表达式的返回值，done表示生成器后面是否还有yield语句，即生成器函数是否已执行完毕并返回
+    console.log(game.next().value); //DO you love JavaScrpt
+
+    // 有参数传给next()时，这个参数会传给“上一条执行yield语句左边的变量，即本题中的“答案”
+    // console.log(game.next("YES").value); //Oh wow...Guess we're gone here
+
+    console.log(game.next("Yes").value); //JavaScript loves you back ❤️
+  </script>
+</body>
+
+</html>

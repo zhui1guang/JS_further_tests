@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // throw自定义异常，其异常作为catch的参数
+    function greeting() {
+      throw "hello"
+    }
+    function sayHi() {
+      try {
+        const data = greeting()
+        console.log('It worked', data)
+      } catch (e) {
+        console.log('Error!', e)
+      }
+    }
+    sayHi() //Error! hello
+  </script>
+</body>
+
+</html>

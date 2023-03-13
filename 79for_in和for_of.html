@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const myLifeSummedUp = ["☕", "💻", "🍷", "🍫"];
+
+    /* 
+      for...in是遍历对象的属性 item是对象的key。如果是数组，则是数组的索引
+    */
+    for (let item in myLifeSummedUp) {
+      console.log(item);
+    }
+    // 输出：0 1 2 3 
+
+    /* 
+      for...of是遍历可迭代对象的属性【值】
+      可迭代对象：Array、Map、Set、arguments、TypedArray
+      所以item是 数组的元素
+    */
+    for (let item of myLifeSummedUp) {
+      console.log(item);
+    }
+    // 输出：☕ 💻 🍷 🍫
+  </script>
+</body>
+
+</html>

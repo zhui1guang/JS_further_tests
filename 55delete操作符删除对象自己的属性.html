@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>delete删除对象本身不存在的属性</title>
+</head>
+
+<body>
+  delete 删除对象本身不存在的属性同样会返回ture
+  <script>
+    var Employee = {
+      age: '23',
+      name: 'abs',
+      designation: 'developer'
+    }
+
+    // 删除对象自己有的属性，返回true
+    console.log(delete Employee.name) //true
+    console.log(delete Employee.age) //true
+
+    // 删除一个不存在的属性，也会返回true
+
+    console.log(delete Employee.bobby)// true
+  </script>
+</body>
+
+</html>

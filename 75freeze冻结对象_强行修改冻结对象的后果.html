@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const obj = {
+      prop: function () { },
+      foo: 'bar'
+    };
+    //冻结对象
+    var o = Object.freeze(obj);
+
+    //使用defineProperty强行修改属性抛出TypeError错误
+    // Object.defineProperty(obj, 'foo', { value: 'changefoo' }); //Uncaught TypeError: Cannot redefine property: foo
+
+    //也不能更改原型——TypeError
+    /* 
+      抛出错误Uncaught TypeError: #<Object> is not extensible
+    */
+    // obj.__proto__ = { x: 20 } 
+    Object.setPrototypeOf(obj, { x: 20 })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function fun() {
+      return (() => 0)()
+    }
+    // 其实是typeof 函数fun的返回值 其返回值是一个返回0的立即执行函数 因此是typeof 0
+    const res = typeof fun()
+    console.log(res) //number
+
+    function foo() { }
+    const res1 = typeof foo()
+    console.log(res1) //undefined 因为foo()是一个函数的调用 没有返回值
+    const res2 = typeof foo //是一个函数名
+    console.log(res2) //function
+  </script>
+</body>
+
+</html>

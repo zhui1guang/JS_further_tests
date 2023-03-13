@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const person = {
+      name: "Lydia",
+      age: 21
+    };
+
+    //这里没有引用对象，只是将对象的city属性值赋值给变量city
+    let city = person.city;
+    city = "Guangzhou";
+    //注意：city的属性值是undefined，但是打印person并没有打印出来
+    console.log(person); //{name: 'Lydia', age: 21}
+    console.log(person.city); //undefined
+
+    //这里就引用person对象了
+    let newCity = person;
+    newCity.city = "Guangzhou";
+    console.log(person); //{name: 'Lydia', age: 21, city: 'Guangzhou'}
+    console.log(person.city) //"Guangzhou"
+  </script>
+</body>
+
+</html>

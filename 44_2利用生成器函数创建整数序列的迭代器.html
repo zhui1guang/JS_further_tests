@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function* makeRangeIterator(start = 0, end = Infinity, step = 1) {
+      for (let i = start; i < end; i += step) {
+        yield i;
+      }
+    }
+    var a = makeRangeIterator(1, 10, 2)
+    // 通过调用生成器的next()方法消耗值时， 生成器函数将执行，直到遇到yield关键字——也就是生成器函数可以中途“停下”，然后再从停下的地方继续
+    console.log(a.next()) //{value: 1, done: false}
+    console.log(a.next()) //{value: 3, done: false}
+    console.log(a.next()) //{value: 5, done: false}
+    console.log(a.next()) //{value: 7, done: false}
+    console.log(a.next()) //{value: 9, done: false}
+    console.log(a.next()) ////{value: undefined, done: true}
+  </script>
+</body>
+
+</html>

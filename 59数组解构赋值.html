@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 解构赋值 将数组中的值 或者 对象中的属性 取出，赋给其他变量
+    const numbers = [1, 2, 3, 4,];
+    const [y] = numbers;
+    console.log(y); //1
+
+    let a, b, remain;
+    //数组解构
+    [a, b] = [1, 2]
+    console.log(a) //1
+    console.log(b); //2
+
+
+    // 上一行没有加分号 扩展运算符就报错
+    [a, b, ...remain] = [10, 20, 30, 40, 50]
+    console.log(a) //10
+    console.log(b) //20
+    console.log(remain) //[30, 40, 50]
+
+    //解构出对象的属性
+    const obj = { c: 22, d: 23 };
+    const { c, d } = obj
+    console.log(c) //22
+  </script>
+</body>
+
+</html>

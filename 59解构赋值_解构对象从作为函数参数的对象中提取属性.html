@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 作为函数的实参
+    const user = {
+      id: 12,
+      displayName: 'chen',
+      fullName: {
+        firstName: 'nuo',
+        lastName: 'chen'
+      }
+    };
+
+    // 从作为函数参数的对象中提取属性
+    function userId({ id }) {
+      return id;
+    }
+    console.log(userId(user)); //12
+
+
+    // 可为提取的属性定义别名
+    function userDisplayName({ displayName: dName }) {
+      return dName;
+    }
+    console.log(userDisplayName(user)); //chen
+
+    // 嵌套对象也可以提取
+    function whoIs({ displayName, fullName: { firstName: name } }) {
+      return `${displayName} is ${name}`;
+    }
+    console.log(whoIs(user)); //chen is nuo
+  </script>
+</body>
+
+</html>

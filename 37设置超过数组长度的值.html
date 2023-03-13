@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let numbers = [1, 2]
+    /* 
+      设置数组值超过定义时的长度的时候，JS会创建名为"empty slots"，它们实际上的值是undefined
+    */
+    numbers[10] = 11
+    console.log(numbers) //输出的表现形式取决于运行的浏览器 node环境等
+    //Edge [1, 2, 空 ã8, 11]
+    //Google  [1, 2, 空属性 × 8, 11]
+  </script>
+</body>
+
+</html>

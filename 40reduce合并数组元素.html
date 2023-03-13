@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      acc初始值是[1, 2]
+      cur第一次是 [0, 1] --> acc [1, 2, 0, 1]
+    */
+    const res = [[0, 1], [2, 3]].reduce(
+      (acc, cur) => {
+        return acc.concat(cur)
+      },
+      // acc初始值 也就是作为第一个参数的初始值
+      [1, 2]
+    )
+    console.log(res) //[1,2, 0, 1, 2, 3]
+  </script>
+</body>
+
+</html>

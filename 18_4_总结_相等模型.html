@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 1. 三种方法都是true undefined/null/布尔类型/string类型/ 0
+    console.log(undefined == undefined)
+    console.log(undefined === undefined)
+    console.log(Object.is(undefined, undefined))
+
+    console.log(null == null);
+    console.log(null === null);
+    console.log(Object.is(null, null));
+
+    console.log(true == true);
+    console.log(true === true);
+    console.log(Object.is(true, true))
+
+    console.log(false == false);
+    console.log(false === false)
+    console.log(Object.is(false, false))
+
+    console.log('foo' == 'foo')
+    console.log('foo' === 'foo')
+    console.log(Object.is('foo', 'foo'))
+
+    console.log(0 == 0)
+    console.log(0 === 0)
+    console.log(Object.is(0, 0))
+
+
+    console.log('\n')
+
+    // 单目运算+ 转换成number的0
+    console.log(+0 == -0)
+    console.log(+0 === -0)
+    console.log(Object.is(+0, -0)) //false
+
+    console.log('\n')
+
+    //@@@@@空数组
+    console.log('空数组')
+    console.log(![]) //false
+    // 先执行![]---> false,然后隐式类型转换 都是0
+    console.log(![] == []); // true
+    console.log(false == ![]) //true
+    console.log(false == []) // true
+    console.log('空数组')
+
+    console.log('\n')
+
+    // 0 和 false
+    console.log(0 == false) //false隐式转换成0---》true
+    console.log(0 === false) //false
+    console.log(Object.is(0, false)) //false
+
+    console.log('\n')
+
+    // "" 和 false
+    console.log("" == false) //都转换成number类型的 ---> true
+    console.log("" === false) //false
+    console.log(Object.is("", false)) //false
+
+    console.log('\n')
+
+    // 字符串和number型
+    console.log('17' == 17) //'17'转换成number类型的17 ---> true
+    console.log('17' === 17) //false
+    console.log(Object.is('17', 17)) //false
+
+    console.log('\n')
+
+    //数组和字符串
+    console.log([1, 2] == '1,2') //true
+    console.log([1, 2] === '1,2')  //false
+    console.log(Object.is([1, 2], '1,2'))
+
+    console.log('\n')
+
+    // 字符串对象类型和string类型
+    console.log(new String('foo') == 'foo')
+    console.log(new String('foo') === 'foo') //false
+    console.log(Object.is(new String('foo'), 'foo')) //false
+
+    console.log('\n')
+
+    // null 和 undefined
+    console.log(null == undefined)
+    console.log(null === undefined) //false
+    console.log(Object.is(null, undefined)) //false
+
+    console.log('\n')
+
+    // 三种都是false
+    // null 和 false
+    console.log(null == false)
+    console.log(null === false)
+    console.log(Object.is(null, false))
+
+    // undefined 和 false
+    console.log(undefined == false)
+    console.log(undefined === false)
+    console.log(Object.is(undefined, false))
+
+    // 两个对象表达式  -- 引用不同
+    console.log({ foo: 'bar' } == { foo: 'bar' })
+    console.log({ foo: 'bar' } === { foo: "bar" })
+    console.log(Object.is({ foo: 'bar' }, { foo: 'bar' }))
+
+    // 两个对象类型 --- 引用不同
+    console.log(new String('foo') == new String('foo'))
+    console.log(new String('foo') === new String('foo'))
+    console.log(Object.is(new String('foo'), new String('foo')))
+
+    //0 和 null
+    console.log(0 == null)
+    console.log(0 === null)
+    console.log(Object.is(0, null))
+
+    // 0 和 undefined
+    console.log(0 == undefined)
+    console.log(0 === undefined)
+    console.log(Object.is(0, undefined))
+
+    // 0 和 NaN
+    console.log(0 == NaN)
+    console.log(0 === NaN)
+    console.log(Object.is(0, NaN))
+
+    console.log('\n')
+
+    // NaN在严格相等和非严格相等的情况下与任何类型都false，除了在Object.is()下和自身相等
+    console.log(NaN == NaN)
+    console.log(NaN === NaN)
+    console.log(Object.is(NaN, NaN))
+  </script>
+</body>
+
+</html>

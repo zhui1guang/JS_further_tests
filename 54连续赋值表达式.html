@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    (() => {
+      /* 相当于
+          y = 10 ——意外声明的全局变量
+          let x = y ——let声明让x只在立即执行函数中作用。
+
+       */
+      let x = (y = 10)
+    })()
+
+    console.log(typeof x) //undefined 已经超出了let声明的立即执行函数中的作用域 因此是未定义
+    console.log(typeof y) // number
+  </script>
+</body>
+
+</html>

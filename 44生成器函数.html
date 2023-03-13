@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function* generator(i) {
+      // 生成器遇到yield关键字会停下
+      yield i;
+      yield i * 2
+    }
+    const gen = generator(10)
+    console.log(gen.next().value) //10
+    // 再次调用next()函数时在上次yield的地方继续后面的
+    console.log(gen.next().value) //20
+    console.log(gen.next().value) //undefined
+  </script>
+</body>
+
+</html>

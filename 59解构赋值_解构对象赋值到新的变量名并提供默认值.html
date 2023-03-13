@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 赋值到新的变量名，提供默认值以防undefined
+    const { a: aa = 10, b: bb = 23 } = { a: 3 };
+
+    console.log(aa); //3
+    console.log(bb); //23
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function Person(firstName, lastName) {
+      console.log(this);
+      this.firstName = firstName
+      this.lastName = lastName
+    }
+
+    /* 
+      new时 this指向的是对象的实例，也就是
+      此时构造函数的作用域已经赋值给了这个实例
+      this --> Person{
+        "firstName" : Lydia
+        "lastName" : Hallie
+      }
+    */
+    const lydia = new Person('Lydia', 'Hallie')
+    /* 
+      没有new时， this指向全局对象window 
+      此时firstName和lastName是window的属性，
+      而darah本身是undefined
+    */
+    const sarah = Person('Sarah', 'Smith')
+
+    console.log(lydia); //Person {firstName: 'Lydia', lastName: 'Hallie'}
+    console.log(sarah);
+    console.log(window.firstName + window.lastName); //SarahSmith
+  </script>
+</body>
+
+</html>

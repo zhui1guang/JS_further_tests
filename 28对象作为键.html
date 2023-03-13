@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const a = {}
+    const b = { key: 'b' }
+    const c = { key: 'c' }
+
+    /* 
+      对象作为键会被自动转换成字符串--> a['[object object]']
+    */
+    a[b] = 123 // --> a["[object object]"] = 123
+    a[c] = 345  // --> a["[object object]"] = 456
+    console.log(a[b]) //345
+  </script>
+</body>
+
+</html>

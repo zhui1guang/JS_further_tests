@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    let obj1 = {
+      person: {
+        name: 'chen',
+        age: 18
+      },
+      hobby: 'music'
+    }
+
+    let obj2 = Object.assign({}, obj1)
+    obj1.person.name = 'echo'
+    obj1.hobby = 'sports'
+    console.log(obj2)
+    // {person:{name:'echo',age:18}, hobby:'music'}
+  </script>
+</body>
+
+</html>

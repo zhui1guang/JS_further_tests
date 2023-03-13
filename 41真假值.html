@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /*
+      8个假值 进行一层非运算是true
+      * null
+      * undefined
+      * NaN
+      * 0
+      * -0
+      * 0n(BigInt(0))
+      * '' "" ``空字符串
+      * 关键字false
+    */
+    console.log(!!null) //false
+    console.log(!!'') //false
+    console.log(!!0)//false
+    console.log(!!1)//true
+    // 空对象是真 !{} --> false
+    console.log(!{}) //false
+    console.log(!!{}) //true
+  </script>
+</body>
+
+</html>

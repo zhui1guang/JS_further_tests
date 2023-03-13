@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 问题：下面哪个构造函数可以成功继承Dog类
+    class Dog {
+      constructor(name) {
+        this.name = name;
+      }
+    }
+
+    class Bobo extends Dog {
+      //1:引用错误：Uncaught ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor 
+      // 在子类中，访问this之前要调用super函数
+      // constructor(name, size) {
+      //   this.size = size
+      // }
+
+      // 2. 正确的构造函数
+      // 访问this前，使用super函数调用父类的构造函数并传入需要的参数
+      constructor(name, size) {
+        super(name);
+        this.size = size;
+      }
+
+      // 3. 没有报错，但是Bobo类要接收两个参数，一个是自己的，一个是从父类继承的name
+      // constructor(size) {
+      //   super(name);
+      //   this.size = size;
+      // }
+
+      // 4. 引用错误 原因同1 Uncaught ReferenceError: Must call super constructor in derived class before accessing 'this' or returning from derived constructor
+      // constructor(name, size) {
+      //   this.name = name;
+      //   this.size = size;
+      // }
+    }
+
+    const bobo = new Bobo('bobo', 12)
+  </script>
+</body>
+
+</html>

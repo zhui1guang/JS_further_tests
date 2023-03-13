@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // a d 被结构赋值
+    const obj = { a: 1, b: { c: 2 } }
+    // 所有变量共享相同的声明。
+    // const { a, b: { c: d } } = obj
+
+    /*
+  如果要一些变量为只读（常量），另一些为可变 需要两次解构
+  */
+    const { a } = obj; //a常量
+    let { b: { c: d } } = obj // d可变
+
+    console.log(a) //1
+
+
+    // console.log(c) //Uncaught ReferenceError: b is not defined
+    // console.log(b) //Uncaught ReferenceError: b is not defined
+    console.log(d) //2
+
+
+
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function getName(name) {
+      /*
+      new Boolean(true)返回一个对象包装器，而不是布尔值本身 
+       */
+      // const hasName = new Boolean(name);//{true}
+      // const hasName = name.length;//4
+      const hasName = !!name;//true
+      return hasName;
+    }
+
+    const res = getName('haha');
+    console.log(res);
+  </script>
+</body>
+
+</html>

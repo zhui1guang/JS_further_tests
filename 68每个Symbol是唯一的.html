@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 基本类型值相同时都严格相等
+    console.log(Number(2) === Number(2)); // true
+    console.log(Boolean(false) === Boolean(false)); //true
+    console.log('string' === 'string'); //true
+    console.log(String('aaa') === String('aaa'));//true
+
+
+    // 每个Symbol的变量是唯一的，尽管传入的参数是相等的
+    console.log(Symbol('foo') === Symbol('foo')); //fasle
+    // 引用不同 不相等
+    console.log(Object('sss') === Object('sss'));//false
+    console.log(Object('sss') == Object('sss'));//false
+  </script>
+</body>
+
+</html>

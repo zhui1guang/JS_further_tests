@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 创建一个简单的范围迭代器，定义了从开始到结束间隔步长的整数序列 不含结束
+    function makeRangeIterator(start = 0, end = Infinity, step = 1) {
+      let nextIndex = start
+      // 创建的序列的大小
+      let iterationCount = 0
+
+      const rangeInterator = {
+        // 返回序列的next和done值(是否迭代到最后一个值）的对象，显示地迭代
+        next: function () {
+          let result;
+          if (nextIndex < end) {
+            result = {
+              value: nextIndex,
+              done: false
+            }
+            nextIndex += step
+            iterationCount++
+            return result
+          }
+          return {
+            value: iterationCount,
+            done: true
+          }
+        }
+      }
+      return rangeInterator
+    }
+
+    let it = makeRangeIterator(1, 10, 1)
+    let res = it.next()
+    while (!res.done) {
+      console.log(res.value)
+      res = it.next()
+    }
+    console.log(res.value) //9
+  </script>
+</body>
+
+</html>

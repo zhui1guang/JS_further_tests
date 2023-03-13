@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    const value = { number: 10 };
+
+    /* 
+      展开语法（浅拷贝）value对象 x = {number : 10}
+      ES6中，可以使用默认值初始化参数。如果没有给函数传参，或者传“undefined”，则参数的值将是默认值
+      因此multiply函数有一个默认值参数（x = {number:10})
+    */
+    const multiply = (x = { ...value }) => {
+      console.log(x.number *= 2);
+    };
+
+    // 每次调用函数，都会创建一个新对象，也就是说各个对象之间不共享作用域。（除非闭包）
+    multiply() //20
+    console.log('-------');
+    console.log(value);
+    console.log('-------');
+    multiply() //20
+    console.log('-------');
+    console.log(value);
+    console.log('-------');
+    /* 函数调用之前，value还是{number:10}，函数调用之后，value变成了{number:20} */
+    multiply(value) //20
+    console.log('-------');
+    console.log(value); //{number: 20}
+    console.log('-------');
+    multiply(value)//40
+    console.log('-------');
+    console.log(value); //{number: 40}
+    console.log('-------');
+  </script>
+</body>
+
+</html>

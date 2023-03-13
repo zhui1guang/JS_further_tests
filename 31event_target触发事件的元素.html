@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .first {
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+    }
+
+    .second {
+      width: 100px;
+      height: 100px;
+      background-color: skyblue;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- event target是触发事件的元素，即使输出函数放在最外层的div，当触发button的时候event.target也还是button -->
+  <!--
+     默认情况下，所有事件处理程序都是在【冒泡阶段】进行注册，可以用event.stopPropagation()阻止冒泡
+    如果想要在【捕获阶段】进行注册，可以利用addEventListener(事件类型，回调函数，是否在捕获阶段注册)第三个参数设置为true
+  -->
+  <div onclick="console.log('first div'); console.log(event.target)" class="first">
+    <div onclick="console.log('second div')" class="second">
+      <button onclick="console.log('button');event.stopPropagation()">
+        Click!
+      </button>
+    </div>
+  </div>
+</body>
+
+</html>

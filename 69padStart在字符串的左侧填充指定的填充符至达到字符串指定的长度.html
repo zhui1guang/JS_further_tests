@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+     padStart(targetStringLength, padString)
+     targetStringLength：目标字符串的填充长度，若该值小于源字符串的长度，则不填充且输出源字符串
+     padString：指定填充符，默认值为空格
+     */
+    const name = "Lydia Hallie";
+    console.log(name.length); //源字符串长度：12
+    console.log(name.padStart(13)); //" Lydia Hallie"
+    console.log(name.padStart(2)); //"Lydia Hallie"
+  </script>
+</body>
+
+</html>

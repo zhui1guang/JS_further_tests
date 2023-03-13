@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      String.raw()唯一的内置模板字符串标签函数
+      用来将模板字符串转换为“原始字符串”，占位符${变量}会被转换为其代表的值；而任何转义字符都会失效，原样输出
+    */
+    console.log(String.raw`Hello\nWorld`); //Hello\nWorld
+
+    const name = "chen"
+    console.log(String.raw`Hello${name}`); //Hellochen
+  </script>
+</body>
+
+</html>

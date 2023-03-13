@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 要props这个对象数组中的第三个元素的name属性
+    const props = [
+      { id: 1, name: 'One' },
+      { id: 2, name: 'Two' },
+      { id: 3, name: 'Three' },
+    ]
+
+    const [, , { name }] = props;
+    console.log(name);
+  </script>
+</body>
+
+</html>

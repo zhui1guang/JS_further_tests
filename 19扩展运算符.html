@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      扩展运算符...args 会返回实参组成的数组 typeof数组是object
+      扩展运算符将每个迭代的每个字符映射成一个元素
+     */
+    function getAge(...args) {
+      console.log(typeof args)
+    }
+    getAge(21) //object
+  </script>
+</body>
+
+</html>

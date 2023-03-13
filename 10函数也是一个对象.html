@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 函数也是一个对象
+    function bar() {
+      console.log('wooo');
+    }
+    bar.animal = 'dog'
+    console.log(bar); // f bar(){console.log('wooo')}
+    console.log(bar.animal) //dog
+    console.log(bar()) // wooo undefined
+    /*
+      正常运行！
+      因为函数也是一个对象，可以用.运算符为对象添加属性
+    */
+  </script>
+</body>
+
+</html>

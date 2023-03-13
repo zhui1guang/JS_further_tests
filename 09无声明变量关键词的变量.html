@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 无声明变量的关键词的变量会被挂载到window中
+    let greeting
+    greetign = {} //Typo! 打字的小错误
+    console.log(greetign); // {}
+    /*
+      注意：以上两个变量出现了拼写错误
+      也就是greetign没有用关键字声明 结果是该变量挂载到全局对象上
+        要避免此问题，可以使用usestrict也就是使用严格模式
+    */
+
+    // 如果将"use strict";指令添加到 JavaScript 程序的第一行，则表示整个脚本都会处于严格模式。如果在函数的第一行代码中添加"use strict";，则表示只在该函数中启用严格模式。
+    /* 
+      <script>
+        "use strict";
+        x = 'http://c.binacheng.net/'; // 此处报错：Uncaught ReferenceError: x is not defined at index.html:11
+        console.log(x);
+       
+
+        或者
+        x = 'http://c.binacheng.net/';
+        console.log(x);
+        function sayHello(){
+            'use strict';
+            str = 'welcome http://c.binacheng.net/'; // 调用 sayHello() 函数在此处报错：Uncaught ReferenceError: str is not defined at sayHello (index.html:14) at index.html:17
+            console.log(str);
+        }
+        sayHello();
+    */
+  </script>
+</body>
+
+</html>

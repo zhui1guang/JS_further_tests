@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      map会创建一个新数组并将所有的返回值都插入到这个新数组中
+      由于[1,2,3]的元素都是number类型 因此新数组的是三个元素都没有返回值 
+      此时map默认返回3个undefined
+    */
+    const res = [1, 2, 3].map(num => {
+      if (typeof num === 'number') return
+      return num * 2
+    })
+    console.log(res) // [undefined, undefined, undefined]
+  </script>
+</body>
+
+</html>

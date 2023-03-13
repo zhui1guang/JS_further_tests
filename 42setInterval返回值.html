@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    /* 
+      setInterval()间隔相同的时间循环调用回调函数
+      返回值是一个唯一的id
+      清除时用 clearInterval()
+    */
+    /* 
+       setTimeout() 一定时间候调用回调
+       返回值是定时器的编号timeOutID 是一个正整数
+       清除时用clearTimeout()
+
+       技术上以上两种清除方式可以互换，
+       但是为了避免混淆，不建议
+    */
+    /* 
+       实际延时比设定值更久
+       setTimeout()/setInterval()每次调用的最小时间间隔是4ms
+    */
+    const res = setInterval(
+      () => {
+        console.log('Hi')
+      },
+      1000
+    )
+    console.log(res) //1 也就是一个唯一的id值
+  </script>
+</body>
+
+</html>

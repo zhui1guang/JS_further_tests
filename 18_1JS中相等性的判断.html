@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <h2>三种不同的值比较
+    <ul>
+      <li>严格相等 ===
+        <ul>
+          <li> NaN === NaN --> false</li>
+          <li>-0 === +0 -->true</li>
+        </ul>
+      </li>
+      <li>抽象相等 ==
+        <ul>
+          <li>比较时， 会发生隐式类型转换</li>
+          <li> NaN == NaN --> false</li>
+          <li>-0 == false --> true</li>
+          <li>+0 == false --> true</li>
+        </ul>
+      </li>
+      <li>ES6新特性 Object.is
+        <ul>
+          <li>与三等号相同（不进行类型转换），但是对于NaN和-0 和+0进行了特殊处理
+            <ul>
+              <li>Object.is(NaN, NaN) -->true</li>
+              <li>Object.is(-0,+0) --> false</li>
+              <li>Object.is(0,-0) --> false</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </h2>
+
+
+</body>
+
+</html>

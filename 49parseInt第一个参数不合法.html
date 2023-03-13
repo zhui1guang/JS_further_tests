@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // parseInt(string, radix)
+    // 如果第一个参数不是字符串，则自动将其转换成字符串。第二个参数是进制
+    console.log((7 * 6).toString()) //42
+    const num = parseInt(7 * 6, 10)
+    console.log(num) //42
+
+    // 指定进制的时候，如果遇到非法字符就停止解析并且忽略后面的所有字符
+    const num1 = parseInt('7*6', 10)
+    console.log(num1) //7
+  </script>
+</body>
+
+</html>

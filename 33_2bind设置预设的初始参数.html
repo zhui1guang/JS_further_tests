@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    function list() {
+      //slice(begin, end) 浅拷贝，返回一个含有被提取元素的新数组 开始于begin索引，在end前一个结束 不会改变原数组
+      // splice(start, deleteCount, item1, item2...)删除或替换现有元素 | 原地增加新的元素deleteCount=0来修改数组 改变原数组
+
+      // 将类数组转换为真正的数组
+      return Array.prototype.slice.call(arguments)
+    }
+
+    function addArguments(arg1, arg2) {
+      return arg1 + arg2
+    }
+
+    var list1 = list(1, 2, 3) //[1, 2, 3]
+
+    var result1 = addArguments(1, 2)
+    console.log(result1) //3
+
+    var leadingThirtySeventList = list.bind(null, 37)
+
+    var addThirtySeven = addArguments.bind(null, 37)
+
+    var list2 = leadingThirtySeventList()
+    console.log(list2) //[37]
+
+    var list3 = leadingThirtySeventList(1, 2, 3)
+    console.log(list3) // [37, 1, 2, 3]
+
+    var result2 = addThirtySeven(1)
+    console.log(result2) //38
+
+    var result3 = addThirtySeven(1, 2, 3)
+    console.log(result3) //38 2,3被忽略，因为37已经占了第一个参数的坑了
+
+  </script>
+</body>
+
+</html>

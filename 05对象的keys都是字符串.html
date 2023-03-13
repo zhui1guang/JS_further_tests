@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 下面那个是无效的
+    const bird = {
+      size: 'small'
+    }
+
+    const mouse = {
+      name: 'Mickey',
+      small: true
+    }
+    /* 
+        所有对象的keys都是字符串（除非对象是Symbol）
+    */
+    /* 
+       先计算bird.size --> 'small' --> moouse["small"] ==true
+    */
+    console.log(mouse[bird.size]); //true
+    /* 
+        bird["size"] --> 'small' ---mouse['small'] == true
+    */
+    console.log(mouse[bird["size"]]); //true
+    /* 
+      点语法时， 先是mouse.bird --->undefined --> undefined.size是无效的
+    */
+    console.log(mouse.bird.size);//Uncaught TypeError: Cannot read properties of undefined (reading 'size')
+  </script>
+</body>
+
+</html>

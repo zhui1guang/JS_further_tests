@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  不可设置的（Non-configurable)不能被delete，也就是说想Array / Math / Object 的内置对象属性以及使用Object.defineProperty()设置为不可设置的属性都不能被删除
+
+  <script>
+    var Employee = {}
+    // 将name设置为不可配置的属性
+    Object.defineProperty(Employee, 'name',
+      { configurable: false })
+
+    console.log(delete Employee.name) // false
+  </script>
+</body>
+
+</html>
